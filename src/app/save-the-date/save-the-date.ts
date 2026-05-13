@@ -48,10 +48,12 @@ export class SaveTheDate implements OnInit, OnDestroy, AfterViewInit {
   }
   
   ngAfterViewInit() {
-    // Initialize canvases
-    this.canvases.forEach((canvasRef) => {
-      this.initCanvas(canvasRef.nativeElement);
-    });
+    // Initialize canvases after layout is settled
+    setTimeout(() => {
+      this.canvases.forEach((canvasRef) => {
+        this.initCanvas(canvasRef.nativeElement);
+      });
+    }, 100);
   }
 
   ngOnDestroy() {
