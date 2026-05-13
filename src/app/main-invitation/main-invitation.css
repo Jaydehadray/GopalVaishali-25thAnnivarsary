@@ -1,0 +1,168 @@
+.scroller-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+  background: transparent;
+}
+
+.scroll-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Background Hearts Parallax Effect */
+.floating-heart {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: floatHeart 15s infinite ease-in-out;
+}
+
+.h1 { top: 15%; left: 10%; animation-delay: 0s; font-size: 2.5rem; }
+.h2 { top: 45%; left: 85%; animation-delay: 2s; font-size: 1.5rem; }
+.h3 { top: 75%; left: 20%; animation-delay: 4s; font-size: 3rem; }
+.h4 { top: 25%; left: 70%; animation-delay: 6s; font-size: 2rem; }
+.h5 { top: 65%; left: 80%; animation-delay: 8s; font-size: 2.5rem; }
+.h6 { top: 85%; left: 60%; animation-delay: 10s; font-size: 1.8rem; }
+.h7 { top: 35%; left: 30%; animation-delay: 12s; font-size: 2.2rem; }
+
+@keyframes floatHeart {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.1; }
+  50% { transform: translate(30px, -60px) rotate(25deg) scale(1.2); opacity: 0.3; }
+}
+
+/* Floral Background Elements */
+.bg-floral {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="%23b59f7b" stroke-width="0.8" d="M50 50 Q70 10 90 50 T50 90 T10 50 T50 10 M50 50 L50 0 M50 50 L100 50 M50 50 L50 100 M50 50 L0 50" opacity="0.6"/><circle cx="50" cy="50" r="3" fill="%23b59f7b" opacity="0.8"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.bg-floral-1 { top: -5%; left: -50px; animation: floatFloral1 20s infinite alternate; }
+.bg-floral-2 { top: 45%; right: -100px; width: 450px; height: 450px; animation: floatFloral2 25s infinite alternate-reverse; }
+.bg-floral-3 { bottom: -10%; left: 10%; width: 350px; height: 350px; animation: floatFloral3 30s infinite alternate; }
+
+@keyframes floatFloral1 {
+  0% { transform: translateY(0) rotate(15deg) scale(1); }
+  100% { transform: translateY(40px) rotate(25deg) scale(1.05); }
+}
+@keyframes floatFloral2 {
+  0% { transform: translateY(0) rotate(-20deg) scale(1); }
+  100% { transform: translateY(-50px) rotate(-10deg) scale(1.05); }
+}
+@keyframes floatFloral3 {
+  0% { transform: translateY(0) rotate(45deg) scale(1); }
+  100% { transform: translateY(-30px) rotate(55deg) scale(1.05); }
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.6;
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeInOut 3s infinite;
+}
+
+.mouse {
+  width: 25px;
+  height: 40px;
+  border: 2px solid var(--silver-accent);
+  border-radius: 15px;
+  position: relative;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--silver-accent);
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(15px); opacity: 0; }
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+.scroller-container::-webkit-scrollbar {
+  display: none;
+}
+.scroller-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Audio Control Button */
+.audio-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(181, 159, 123, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(181, 159, 123, 0.15), 0 0 15px rgba(181, 159, 123, 0.1);
+  transition: all 0.3s ease;
+}
+
+.audio-control:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(181, 159, 123, 0.2), 0 0 25px rgba(181, 159, 123, 0.2);
+}
+
+.audio-control .icon {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .audio-control {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  .audio-control .icon {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,77 @@
+<div class="save-date-wrapper section-wrapper">
+  <!-- Many many Confetti Elements -->
+  @if (showConfetti) {
+    <div class="confetti-container">
+      @for (p of confettiParticles; track p.id) {
+        <div class="confetti" 
+             [style.left]="p.left" 
+             [style.animationDelay]="p.delay" 
+             [style.backgroundColor]="p.color"
+             [style.width]="p.size"
+             [style.height]="p.size"></div>
+      }
+    </div>
+  }
+
+  <div class="header">
+    <h3 class="subtitle">@ THE DATE</h3>
+    <h1 class="title script-font">Save the Date</h1>
+    <p class="instruction">Scratch below to reveal our anniversary date</p>
+  </div>
+
+  <div class="scratch-container">
+    <div class="scratch-card" [class.revealed]="revealed.month">
+      <span class="label">MONTH</span>
+      <div class="reveal-content script-font">May</div>
+      <canvas #scratchCanvas data-part="month" width="160" height="120"></canvas>
+    </div>
+    
+    <div class="scratch-card" [class.revealed]="revealed.day">
+      <span class="label">DAY</span>
+      <div class="reveal-content script-font">29</div>
+      <canvas #scratchCanvas data-part="day" width="160" height="120"></canvas>
+    </div>
+    
+    <div class="scratch-card" [class.revealed]="revealed.year">
+      <span class="label">YEAR</span>
+      <div class="reveal-content script-font">2026</div>
+      <canvas #scratchCanvas data-part="year" width="160" height="120"></canvas>
+    </div>
+  </div>
+
+  <div class="countdown-wrapper">
+    @if (allRevealed) {
+      <div class="countdown-container revealed-animation">
+        <div class="countdown-title">Counting down to the big day</div>
+        <div class="timer">
+          <div class="time-block">
+            <span class="number">{{ countdown.days }}</span>
+            <span class="unit">Days</span>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-block">
+            <span class="number">{{ countdown.hours | number:'2.0' }}</span>
+            <span class="unit">Hours</span>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-block">
+            <span class="number">{{ countdown.minutes | number:'2.0' }}</span>
+            <span class="unit">Mins</span>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-block">
+            <span class="number">{{ countdown.seconds | number:'2.0' }}</span>
+            <span class="unit">Secs</span>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="placeholder-seal">
+        <div class="seal-inner">
+          <span class="diamond"></span>
+          <p>Reveal date to start countdown</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

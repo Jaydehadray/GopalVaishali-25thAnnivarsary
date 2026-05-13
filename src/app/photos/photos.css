@@ -1,0 +1,105 @@
+.photos-wrapper {
+  background: transparent;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 4rem;
+  color: var(--white);
+  text-shadow: 0 0 10px rgba(181, 159, 123, 0.2);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--silver-accent), transparent);
+  max-width: 150px;
+}
+
+.diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--silver-accent);
+  transform: rotate(45deg);
+  margin: 0 15px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.photo-frame {
+  background: #fdfcf9;
+  padding: 15px 15px 45px 15px;
+  border: 1px solid rgba(181, 159, 123, 0.2);
+  box-shadow: 0 20px 40px rgba(181, 159, 123, 0.15);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+  max-width: 280px;
+  position: relative;
+}
+
+.photo-frame:nth-child(1) {
+  transform: rotate(-5deg) translateX(20px);
+  z-index: 2;
+  opacity: 1;
+}
+
+.photo-frame:nth-child(2) {
+  transform: rotate(5deg) translateX(-20px);
+  z-index: 1;
+  opacity: 1;
+}
+
+/* Fan out animation on scroll */
+.photo-frame.active:nth-child(1) {
+  transform: rotate(-10deg) translateX(-30px);
+}
+
+.photo-frame.active:nth-child(2) {
+  transform: rotate(10deg) translateX(30px);
+}
+
+.photo-frame:hover {
+  transform: scale(1.1) rotate(0deg) !important;
+  z-index: 10 !important;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(181, 159, 123, 0.2);
+}
+
+.caption {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--silver-accent);
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .title { font-size: 3rem; }
+  .photo-frame { max-width: 200px; }
+  .gallery { gap: 20px; }
+  .photo-frame.active:nth-child(1), .photo-frame.active:nth-child(2) {
+    transform: rotate(0) translateX(0);
+  }
+}

@@ -1,0 +1,181 @@
+.venue-wrapper {
+  background: transparent;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.venue-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid transparent;
+  background-image: linear-gradient(var(--card-bg), var(--card-bg)), 
+                    linear-gradient(135deg, rgba(181, 159, 123, 0.2) 0%, rgba(212, 175, 55, 0.5) 25%, rgba(181, 159, 123, 0.2) 50%, rgba(255, 223, 115, 0.4) 75%, rgba(181, 159, 123, 0.2) 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: 100% 100%, 200% 200%;
+  animation: shimmerBorder 6s infinite linear;
+  border-radius: 20px;
+  padding: 60px 40px;
+  box-shadow: 0 20px 50px rgba(181, 159, 123, 0.15);
+  position: relative;
+}
+
+.venue-card::before, .venue-card::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%23b59f7b' stroke-width='2' d='M10 40 L10 10 L40 10' opacity='0.5'/%3E%3Ccircle cx='10' cy='10' r='4' fill='%23b59f7b' opacity='0.7'/%3E%3Ccircle cx='10' cy='45' r='2' fill='%23b59f7b' opacity='0.5'/%3E%3Ccircle cx='45' cy='10' r='2' fill='%23b59f7b' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 10;
+}
+.venue-card::before {
+  top: 15px;
+  left: 15px;
+}
+.venue-card::after {
+  bottom: 15px;
+  right: 15px;
+  transform: rotate(180deg);
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 4rem;
+  color: var(--white);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--silver-accent), transparent);
+  max-width: 120px;
+}
+
+.diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--silver-accent);
+  transform: rotate(45deg);
+  margin: 0 15px;
+}
+
+.venue-info {
+  margin-bottom: 25px;
+}
+
+.venue-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.venue-name {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.venue-address {
+  font-size: 1.1rem;
+  color: var(--silver-light);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.map-embed-container {
+  width: 100%;
+  height: 250px;
+  border: 1px solid var(--silver-accent);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.map-link-btn {
+  display: inline-block;
+  color: var(--silver-light);
+  text-decoration: underline;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.map-link-btn:hover {
+  opacity: 1;
+}
+
+.contact-box {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(181, 159, 123, 0.2);
+}
+
+.contact-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--silver-accent);
+  margin-bottom: 8px;
+}
+
+.numbers {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.numbers a {
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(181, 159, 123, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(181, 159, 123, 0.3);
+}
+
+.numbers a:hover {
+  color: var(--silver-accent);
+  background: rgba(181, 159, 123, 0.2);
+  transform: scale(1.05);
+}
+
+.footer-note {
+  margin-top: 25px;
+}
+
+.footer-note p {
+  font-size: 1.8rem;
+  color: var(--silver-accent);
+}
+
+@media (max-width: 600px) {
+  .title { font-size: 3rem; }
+  .venue-name { font-size: 1.6rem; }
+  .venue-card { padding: 40px 20px; }
+  .map-embed-container { height: 200px; }
+}

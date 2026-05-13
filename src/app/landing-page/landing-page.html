@@ -1,0 +1,30 @@
+<div class="landing-wrapper page-wrapper" [class.opening]="isOpening">
+  <!-- Decorative background elements -->
+  <div class="sparkles-container">
+    @for (i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; track i) {
+      <div class="sparkle" [style.top]="(i * 6) + '%'" [style.left]="(i * Math.random() * 10) + '%'" [style.animationDelay]="(i * 0.2) + 's'"></div>
+    }
+  </div>
+
+  <div class="envelope" (click)="openInvitation()">
+    <div class="envelope-glow"></div>
+    <div class="content-box">
+      <h3 class="subtitle">You are cordially invited</h3>
+      <div class="divider">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+      <h1 class="title script-font">Gopal <span class="amp">&</span> Vaishali</h1>
+      <h2 class="anniversary">25th Anniversary</h2>
+      
+      <button class="silver-btn open-btn" (click)="$event.stopPropagation(); openInvitation()" [class.clicked]="isOpening">
+        @if (isOpening) {
+          Unsealing...
+        } @else {
+          Open Invitation
+        }
+      </button>
+    </div>
+  </div>
+</div>

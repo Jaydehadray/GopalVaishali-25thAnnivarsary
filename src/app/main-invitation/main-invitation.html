@@ -1,0 +1,62 @@
+<div class="scroller-container">
+  <!-- Global Background Decorations -->
+  <div class="bg-decor">
+    <div class="stars"></div>
+    <div class="bokeh" style="width: 300px; height: 300px; top: 10%; left: 5%;"></div>
+    <div class="bokeh" style="width: 400px; height: 400px; top: 60%; left: 70%;"></div>
+    <div class="bokeh" style="width: 200px; height: 200px; top: 30%; left: 80%;"></div>
+    
+    <!-- Floating Hearts & Stars -->
+    <div class="floating-heart h1">💛</div>
+    <div class="floating-heart h2">✨</div>
+    <div class="floating-heart h3">🤍</div>
+    <div class="floating-heart h4">✨</div>
+    <div class="floating-heart h5">💛</div>
+    <div class="floating-heart h6">🤍</div>
+    <div class="floating-heart h7">✨</div>
+    
+    <!-- Floral Background Elements -->
+    <div class="bg-floral bg-floral-1"></div>
+    <div class="bg-floral bg-floral-2"></div>
+    <div class="bg-floral bg-floral-3"></div>
+    
+    <!-- Glitter Field -->
+    <div class="glitter-field">
+      @for (g of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]; track $index) {
+        <div class="glitter" [style.top]="(g * 5) + '%'" [style.left]="(g * 31 % 100) + '%'" [style.animationDelay]="(g * 0.2) + 's'"></div>
+      }
+    </div>
+  </div>
+
+  <section id="details" class="scroll-section section-wrapper">
+    <app-invitation-details></app-invitation-details>
+  </section>
+  
+  <section id="save-the-date" class="scroll-section section-wrapper">
+    <app-save-the-date></app-save-the-date>
+  </section>
+  
+  <section id="photos" class="scroll-section section-wrapper">
+    <app-photos></app-photos>
+  </section>
+  
+  <section id="schedule" class="scroll-section section-wrapper">
+    <app-schedule></app-schedule>
+  </section>
+  
+  <section id="venue" class="scroll-section section-wrapper">
+    <app-venue></app-venue>
+  </section>
+
+  <!-- Audio and Audio Controls moved outside scroller for mobile fixed position -->
+</div>
+
+<audio #bgMusic loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=wedding-piano-100222.mp3" type="audio/mpeg">
+  <source src="assets/celebration.mp3" type="audio/mpeg">
+</audio>
+
+<div class="audio-control" (click)="toggleAudio()">
+  <span *ngIf="isMuted" class="icon">🔇</span>
+  <span *ngIf="!isMuted" class="icon">🔊</span>
+</div>
